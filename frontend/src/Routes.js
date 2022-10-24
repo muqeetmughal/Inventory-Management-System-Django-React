@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router';
 import Users from "./Views/users/Users";
 import AddUser from "./Views/users/AddUser";
 import Products from "./Views/products/Products";
+import Pos from "./Views/pos";
+import POSLayout from "./layouts/POSLayout";
 
 const RoutesConfig = () => {
 
@@ -33,7 +35,10 @@ const RoutesConfig = () => {
                     </Route>
 
 
-                    {/* <Route path="dashboard" element={<Welcome />} /> */}
+                </Route>
+                <Route path="/" element={<POSLayout />}>
+
+                    <Route path="pos" element={<Pos />} />
                 </Route>
 
             </Routes>

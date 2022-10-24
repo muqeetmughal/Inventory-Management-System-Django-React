@@ -16,7 +16,7 @@ const Products = () => {
     })
 
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <h4>Loading...</h4>
     }
     return (
         <div>
@@ -25,7 +25,7 @@ const Products = () => {
                 data={data.data}
                 onRowClick={rowData => {
                     console.log(rowData);
-                }}
+                }}s
             >
                 <Column width={60} align="center" fixed>
                     <HeaderCell>Id</HeaderCell>
