@@ -4,8 +4,13 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
+
 class Warehouse(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
+
+    def __str__(self) -> str:
+        return self.name
+
 
 class Product(models.Model):
 
@@ -16,9 +21,9 @@ class Product(models.Model):
         "Category", on_delete=models.SET_NULL, null=True, blank=True)
 
     sku = models.CharField(max_length=20, null=True, blank=True)
-    hsn = models.CharField(max_length=6, null=True, blank=True)
-    minimum_quantity = models.IntegerField(default=0)
-    lot_number = models.CharField(max_length=50, null=True, blank=True)
+    # hsn = models.CharField(max_length=6, null=True, blank=True)
+    # minimum_quantity = models.IntegerField(default=0)
+    # lot_number = models.CharField(max_length=50, null=True, blank=True)
     expiry_date = models.DateField()
     desciption = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to="products")
@@ -31,6 +36,12 @@ class Product(models.Model):
 
     barcode_symbology = models.CharField(
         max_length=20, choices=BARCODE_SYMBOLOGY_CHOICES.choices, default=BARCODE_SYMBOLOGY_CHOICES.CODE128)
+
+    warehouse = models.ForeignKey(
+        'Warehouse', on_delete=models.SET_NULL, null=True, blank=True, related_name="products_in_warehouse")
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class ProductImage(models.Model):
