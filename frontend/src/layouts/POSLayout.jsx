@@ -13,7 +13,7 @@ const POSLayout = () => {
         <Header>
           <Navbar appearance="inverse">
             <Navbar.Brand>
-              <a style={{ color: '#fff' }}>Brand</a>
+              POS
             </Navbar.Brand>
             <Nav>
               <Nav.Item icon={<HomeIcon />}>Home</Nav.Item>
